@@ -1,5 +1,6 @@
 # 📚 ScholarSanim AI
 (*USE DEMO APP HERE*): <a href="https://ai.studio/apps/drive/192QvVwgCL2jbFqq9mfAcQwTGY79ZgouA?fullscreenApplet=true">Click here</a>
+
 **AI-Powered Research Paper Generator with Visual Diagrams & PDF Export**
 
 ScholarSanim AI is an intelligent research-paper generation tool built using **Google AI Studio**.
