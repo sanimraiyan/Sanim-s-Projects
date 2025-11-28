@@ -1,0 +1,5 @@
+{
+  "name": "ScholarSanim AI",
+  "description": "An AI-powered research paper generator that creates structured, beautiful academic papers with relevant imagery and up-to-date information using Google Search grounding.",
+  "requestFramePermissions": []
+}
