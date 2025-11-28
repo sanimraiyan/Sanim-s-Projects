@@ -1,4 +1,5 @@
 # 📚 ScholarSanim AI
+(*USE DEMO APP HERE*): https://ai.studio/apps/drive/192QvVwgCL2jbFqq9mfAcQwTGY79ZgouA?fullscreenApplet=true
 
 **AI-Powered Research Paper Generator with Visual Diagrams & PDF Export**
 
@@ -91,14 +92,3 @@ It showcases creativity, technical initiative, and the ability to build function
 **Sanim Raiyan**
 Creator of ScholarSanim AI
 Undergraduate applicant interested in Computer Science & Software Engineering.
-
----
-
-If you'd like, I can also make:
-
-✅ a **project logo**
-✅ a **GitHub preview banner**
-✅ a **cleaner, more advanced README** with badges and GIFs
-✅ a **short demo video script** to add to GitHub
-
-Just tell me!
