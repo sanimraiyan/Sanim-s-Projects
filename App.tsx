@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PaperData, GenerationStep, PaperSection } from './types';
 import { generatePaperOutline, generateSectionContent, generateSectionImage } from './services/geminiService';
 import { PaperRenderer } from './components/PaperRenderer';
 import { ChatBot } from './components/ChatBot';
-import { BookOpen, Sparkles, Loader2, ArrowRight, ArrowLeft, Search, FileText, Image as ImageIcon, Settings2, Check } from 'lucide-react';
+import { BookOpen, Sparkles, Loader2, ArrowRight, ArrowLeft, Search, FileText, Image as ImageIcon, Download, Check } from 'lucide-react';
 
 const App: React.FC = () => {
   const [topic, setTopic] = useState('');
@@ -11,6 +11,26 @@ const App: React.FC = () => {
   const [step, setStep] = useState<GenerationStep>(GenerationStep.IDLE);
   const [loadingMessage, setLoadingMessage] = useState('');
   const [progress, setProgress] = useState(0);
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+
+  useEffect(() => {
+    // Listen for the install prompt
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    });
+  }, []);
+
+  const handleInstallClick = () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult: any) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+        setDeferredPrompt(null);
+      }
+    });
+  };
 
   const handleGenerate = async () => {
     if (!topic.trim()) return;
@@ -102,6 +122,16 @@ const App: React.FC = () => {
             <span className="text-xl font-bold tracking-tight text-slate-900">ScholarSanim AI</span>
           </div>
           <div className="flex items-center gap-4 text-sm font-medium text-slate-500">
+            {deferredPrompt && (
+              <button 
+                onClick={handleInstallClick}
+                className="flex items-center gap-2 px-3 py-1.5 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors shadow-sm text-xs sm:text-sm"
+              >
+                <Download size={16} />
+                <span className="hidden sm:inline">Install App</span>
+                <span className="sm:hidden">Install</span>
+              </button>
+            )}
             <span className="hidden sm:block">Powered by Gemini 2.5 Flash & 3.0 Pro</span>
           </div>
         </div>
